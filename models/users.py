@@ -39,8 +39,14 @@ class UserSchema(UserBase):
         populate_by_name = True
 
 class UserAccountSchema(Base):
-    name: str
+
     email: EmailStr
     """ We set an alias for the field so that when this field is serialized or deserialized,
     the name "password" will be used instead of "hashed_password." """
     hashed_password: str = Field(alias="password")
+
+class UserRegistrationSchema(UserAccountSchema):
+    name: str
+
+    class Config:
+        populate_by_name = True

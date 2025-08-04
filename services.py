@@ -55,4 +55,4 @@ async def get_current_user_token(token: str = Depends(oauth2_scheme), session: S
     user = session.exec(statement).one()
     if user is None:
         raise credentials_exception
-    return user
+    return token_data
